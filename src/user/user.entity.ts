@@ -25,6 +25,9 @@ export class User {
   @Column({ type: 'varchar', length: 20, unique: true })
   phone: string;
 
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  password: string | null;
+
   @Column({ type: 'enum', enum: PlanType, default: PlanType.FREE })
   plan_type: PlanType;
 

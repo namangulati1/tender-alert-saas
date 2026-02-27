@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {
   Controller,
   Post,
@@ -10,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { createHmac } from 'crypto';
+import { Public } from '../auth/public.decorator.js';
 import { SubscriptionService } from './subscription.service.js';
 import { RazorpaySubscriptionStatus } from './subscription.entity.js';
 
@@ -31,6 +35,7 @@ export class SubscriptionController {
    * Razorpay webhook endpoint.
    * Validates HMAC signature before processing any event.
    */
+  @Public()
   @Post('webhook')
   @HttpCode(200)
   async handleWebhook(

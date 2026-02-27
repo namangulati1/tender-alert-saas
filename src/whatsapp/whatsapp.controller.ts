@@ -13,6 +13,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import type { Response } from 'express';
 import { Res } from '@nestjs/common';
+import { Public } from '../auth/public.decorator.js';
 
 @Controller('whatsapp')
 export class WhatsappController {
@@ -29,6 +30,7 @@ export class WhatsappController {
    * Webhook verification endpoint (GET).
    * Meta sends a GET request with hub.mode, hub.verify_token, and hub.challenge.
    */
+  @Public()
   @Get('webhook')
   verifyWebhook(
     @Query('hub.mode') mode: string,
@@ -49,6 +51,7 @@ export class WhatsappController {
    * Incoming message handler (POST).
    * Receives incoming messages and status updates from WhatsApp.
    */
+  @Public()
   @Post('webhook')
   @HttpCode(200)
   handleIncomingMessage(@Body() body: any): { status: string } {

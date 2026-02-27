@@ -21,7 +21,7 @@ export interface ScrapedTender {
 export class ExampleScraper {
   private readonly logger = new Logger(ExampleScraper.name);
 
-  async scrape(): Promise<ScrapedTender[]> {
+  scrape(): ScrapedTender[] {
     this.logger.log('Running example scraper...');
 
     // Simulated tenders for demonstration

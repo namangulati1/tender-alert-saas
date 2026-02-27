@@ -1,7 +1,7 @@
-import { IsString, IsEnum, IsOptional, IsNotEmpty } from 'class-validator';
-import { PlanType } from '../user.entity.js';
+import { IsString, IsNotEmpty, IsEnum, IsOptional } from 'class-validator';
+import { PlanType } from '../../user/user.entity.js';
 
-export class CreateUserDto {
+export class RegisterDto {
   @IsString()
   @IsNotEmpty()
   phone: string;

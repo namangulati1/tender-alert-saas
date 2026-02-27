@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ScheduleModule } from '@nestjs/schedule';
+import { APP_GUARD } from '@nestjs/core';
 
 import { UserModule } from './user/user.module.js';
 import { TenderModule } from './tender/tender.module.js';
@@ -11,6 +12,8 @@ import { QueueModule } from './queue/queue.module.js';
 import { NotificationModule } from './notification/notification.module.js';
 import { WhatsappModule } from './whatsapp/whatsapp.module.js';
 import { SubscriptionModule } from './subscription/subscription.module.js';
+import { AuthModule } from './auth/auth.module.js';
+import { GlobalAuthGuard } from './auth/global-auth.guard.js';
 
 @Module({
   imports: [
@@ -49,6 +52,13 @@ import { SubscriptionModule } from './subscription/subscription.module.js';
     NotificationModule,
     WhatsappModule,
     SubscriptionModule,
+    AuthModule,
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: GlobalAuthGuard,
+    },
   ],
 })
 export class AppModule {}

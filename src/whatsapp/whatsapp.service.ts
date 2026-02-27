@@ -30,7 +30,7 @@ export class WhatsappService {
     );
 
     this.httpClient = axios.create({
-      baseURL: `https://graph.facebook.com/v18.0/${this.phoneNumberId}`,
+      baseURL: `https://graph.facebook.com/v22.0/${this.phoneNumberId}`,
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
