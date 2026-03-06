@@ -14,6 +14,7 @@ import { WhatsappModule } from './whatsapp/whatsapp.module.js';
 import { SubscriptionModule } from './subscription/subscription.module.js';
 import { AuthModule } from './auth/auth.module.js';
 import { GlobalAuthGuard } from './auth/global-auth.guard.js';
+import { DatabaseModule } from './database/database.module.js';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { GlobalAuthGuard } from './auth/global-auth.guard.js';
     WhatsappModule,
     SubscriptionModule,
     AuthModule,
+    DatabaseModule,
   ],
   providers: [
     {
